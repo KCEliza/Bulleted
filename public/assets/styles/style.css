@@ -1,0 +1,293 @@
+
+body, html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-image: url("/assets/images/worn_dots.png");
+  background-repeat: repeat;
+}
+
+.wrapper {
+  min-height: calc(100vh - 300px);
+}
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+#logo-container {
+  height: 70%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+h1, h2, h3, h6 {
+  font-family: 'Rock Salt', cursive;
+  background-color: rgba(255, 193, 7, 0.8);
+  text-align: center;
+}
+
+p {
+  line-height: 2rem;
+  padding-top: 20px;
+  margin: 0px 50px;
+}
+.footerP {
+  padding-top: 0;
+}
+
+.sidenav-trigger {
+  color: #ffc107;
+}
+
+.parallax-container {
+  /* min-height: 380px; */
+  line-height: 0;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+  
+.parallax {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);  
+}
+
+.feature-img {
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+.space{
+  padding: 75px 0;
+}
+
+@media only screen and (max-width : 992px) {
+  /* .parallax-container .section {
+    position: absolute;
+    top: 50%;
+  }
+  #index-banner .section {
+    top: 50%;
+  } */
+  #logo-container {
+    left: 50%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  /* #index-banner .section {
+    top: 50%;
+  } */
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+
+/* Dashboard */
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+.divider {
+  margin-bottom: 20px;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul.myUL li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul.myUL li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul.myUL li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul.myUL li.completed {
+  background: #ffc107;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+
+/* Add a "checked" mark when clicked on */
+ul.myUL li.completed::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 15px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.deleteItem {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.deleteItem:hover {
+  background-color: #ffc107;
+  color: white;
+}
+
+.deleteJournal {
+  position: absolute;
+  right: 0;
+  top: -15px;
+  padding: 12px 16px 12px 16px;
+}
+
+.deleteJournal:hover {
+  background-color: #ffc107;
+  color: white;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+input:focus, textarea.materialize-textarea:focus:not([readonly]){
+  border-bottom: 1px solid #ffc107 !important;
+  box-shadow: 0 1px 0 0 #ffc107 !important;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) + label{
+  color: #ffc107 !important;
+}
+
+.card-action {
+  display: flex;
+}
+
+#addbtn {
+  margin-left: 20px;
+}
+
+#goToUserPage {
+  margin-top: 30px;
+}
+
+#journal-entries {
+  text-align: left;
+}
+
+#journal-divider {
+  margin: 50px 0 50px 0;
+}
+
+.entry {
+  position: relative;
+}
+
+.hero404 {
+  background-image: url("https://www.udiscovermusic.com/wp-content/uploads/2018/10/Lionel-Richie-self-titled-album-cover-web-optimised-820.jpg");
+  width: 100vw;
+  height: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.alert404 {
+  text-align: center;
+  color: white;
+  font-size: 100px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+  left: 15%;
+}
+
+.hello {
+  text-align: center;
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+  position: relative;
+  top: 55%;
+  left: 15%;
+}
+
+.home {
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  position: relative;
+  top: 60%;
+  left: 10%;
+  width: 200px;
+  border: 5px solid white;
+  padding: 15px;
+}
+
