@@ -1,4 +1,9 @@
 
+.testROWS {
+  background: red;
+}
+
+
 body, html {
   height: 100%;
 }
@@ -289,5 +294,9 @@ textarea.materialize-textarea:focus:not([readonly]) + label{
   width: 200px;
   border: 5px solid white;
   padding: 15px;
+}
+
+.section {
+  padding: 0;
 }
 

@@ -36,6 +36,12 @@ module.exports = function(app) {
     }
     });
 
+    app.get("/logout", function (req, res) {
+        req.logout();
+        res.redirect("/");
+        // window.location = "/";
+    });
+
     // Here we've added our isAuthenticated middleware to this route. If a user who is not logged in tries to access this route they will be redirected to the signup page
     app.get("/members", isAuthenticated, function(req, res) {
         if (req.user) {

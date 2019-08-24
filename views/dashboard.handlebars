@@ -9,11 +9,11 @@
                 <div class="col s12 m4 l2"></div>
             </div>
         </div>
-
+<div class="row center testROWS">
         <div class="section sectionForm" id="todaysForm">
-            <div class="row center">
-                <div class="col s12 m4 l2"></div>
-                <div class="col s12 m4 l8">
+            
+                
+                <div class="col s12 m6 l3">
                     <div class="card white">
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center">Today</span>
@@ -41,14 +41,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m4 l2"></div>
-            </div>
+                
         </div>
 
         <div class="section sectionForm" id="weeksForm">
-            <div class="row center">
-                <div class="col s12 m4 l2"></div>
-                <div class="col s12 m4 l8">
+            
+                
+                <div class="col s12 m6 l3">
                     <div class="card white">
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center">This Week</span>
@@ -75,14 +74,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m4 l2"></div>
-            </div>
+            
         </div>
 
         <div class="section sectionForm" id="monthsForm">
-            <div class="row center">
-                <div class="col s12 m4 l2"></div>
-                <div class="col s12 m4 l8">
+            
+                <div class="col s12 m6 l3">
                     <div class="card white">
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center">This Month</span>
@@ -109,14 +106,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m4 l2"></div>
-            </div>
+            
         </div>
 
         <div class="section journalForm" id="journalsForm">
-            <div class="row center">
-                <div class="col s12 m4 l2"></div>
-                <div class="col s12 m4 l8">
+            
+                <div class="col s12 m6 l3">
                     <div class="card white">
                         <div class="card-content gray-text text-darken-4">
                             <span class="card-title center div">Journals</span>
@@ -145,8 +140,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m4 l2"></div>
             </div>
+       <div class="section sectionForm" id="todaysForm">
+            
+                
+                <div class="col s12 m6 l3">
+                    <div class="card white">
+                        <div class="card-content gray-text text-darken-4">
+                            <span class="card-title center">TEST</span>
+                            <div class="divider"></div>
+                            <ul class="myUL">
+                                
+                                {{#each todays}}
+                                {{#if completed}}
+                                <span class="todo">
+                                    <li class="completed" id={{id}}>{{todo}}
+                                        <span class="deleteItem" id={{id}}>X</span></li>
+                                </span>
+                                {{else}}
+                                <span class="todo">
+                                    <li id={{id}}>{{todo}}
+                                        <span class="deleteItem" id={{id}}>X</span></li>
+                                </span>
+                                {{/if}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="card-action">
+                            <input type="text" class="todo" placeholder="To-Do Item">
+                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
+                        </div>
+                    </div>
+                </div>
+                
         </div>
     </div>
+</div>
 </div>

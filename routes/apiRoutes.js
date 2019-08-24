@@ -246,12 +246,6 @@ console.log("months PUT route hit");
             });
         }
     });
-    // Route for logging user out
-    app.get("/logout", function (req, res) {
-        req.logout();
-        res.redirect("/");
-        // window.location = "/";
-    });
 
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", function (req, res) {
