@@ -9,171 +9,176 @@
                 <div class="col s12 m4 l2"></div>
             </div>
         </div>
-<div class="row center testROWS">
-        <div class="section sectionForm" id="todaysForm">
-            
-                
-                <div class="col s12 m6 l3">
-                    <div class="card white">
-                        <div class="card-content gray-text text-darken-4">
-                            <span class="card-title center">Today</span>
-                            <div class="divider"></div>
-                            <ul class="myUL">
-                                
-                                {{#each todays}}
-                                {{#if completed}}
-                                <span class="todo">
-                                    <li class="completed" id={{id}}>{{todo}}
-                                        <span class="deleteItem" id={{id}}>X</span></li>
-                                </span>
-                                {{else}}
-                                <span class="todo">
-                                    <li id={{id}}>{{todo}}
-                                        <span class="deleteItem" id={{id}}>X</span></li>
-                                </span>
-                                {{/if}}
-                                {{/each}}
-                            </ul>
-                        </div>
-                        <div class="card-action">
-                            <input type="text" class="todo" placeholder="To-Do Item">
-                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
-                        </div>
-                    </div>
-                </div>
-                
-        </div>
+        <div class="col s12 m6 l3">
 
-        <div class="section sectionForm" id="weeksForm">
-            
-                
-                <div class="col s12 m6 l3">
-                    <div class="card white">
-                        <div class="card-content gray-text text-darken-4">
-                            <span class="card-title center">This Week</span>
-                            <div class="divider"></div>
-                            <ul class="myUL">
-                                {{#each weeks}}
-                                {{#if completed}}
-                                <span class="todo">
-                                    <li class="completed" id={{id}}>{{todo}}
-                                        <span class="deleteItem" id={{id}}>X</span></li>
-                                </span>
-                                {{else}}
-                                <span class="todo">
-                                    <li id={{id}}>{{todo}}
-                                        <span class="deleteItem" id={{id}}>X</span></li>
-                                </span>
-                                {{/if}}
-                                {{/each}}
-                            </ul>
-                        </div>
-                        <div class="card-action">
-                            <input type="text" class="todo" placeholder="To-Do Item">
-                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
-                        </div>
-                    </div>
-                </div>
-            
-        </div>
+            <div class="addBar">
+                {{!-- there has to be a better way to write this, also! the words need to be links to a routes file to create the new thing --}}
+                <ul>
+                    <li>Journal Entry</li>
+                    <li>|</li>
+                    <li>To-Do Item</li>
+                    <li>|</li>
+                    <li>Tracker Row</li>
+                </ul>
+            </div>
 
-        <div class="section sectionForm" id="monthsForm">
-            
-                <div class="col s12 m6 l3">
-                    <div class="card white">
+            <div class="row center">
+                <div class="section trackerForm center-align clearfix" id="trackerForm">
+                    <div class=" s12 m6 l3"> 
+                        {{!-- ^^^ a col was here... if stuff starts breaking put it back and blame sarah --}}
                         <div class="card-content gray-text text-darken-4">
-                            <span class="card-title center">This Month</span>
-                            <div class="divider"></div>
-                            <ul class="myUL">
-                                {{#each months}}
-                                {{#if completed}}
-                                <span class="todo">
-                                    <li class="completed" id={{id}}>{{todo}}
-                                        <span class="deleteItem" id={{id}}>X</span></li>
-                                </span>
-                                {{else}}
-                                <span class="todo">
-                                    <li id={{id}}>{{todo}}
-                                        <span class="deleteItem" id={{id}}>X</span></li>
-                                </span>
-                                {{/if}}
-                                {{/each}}
-                            </ul>
-                        </div>
-                        <div class="card-action">
-                            <input type="text" class="todo" placeholder="To-Do Item">
-                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
-                        </div>
-                    </div>
-                </div>
-            
-        </div>
-
-        <div class="section journalForm" id="journalsForm">
-            
-                <div class="col s12 m6 l3">
-                    <div class="card white">
-                        <div class="card-content gray-text text-darken-4">
-                            <span class="card-title center div">Journals</span>
-                            <div class="divider"></div>
-                            <div id="journal-entries">
-                                {{#each journals}}
-                                <div class="entry">
-                                    <h6 class="journal-title">{{createdAt}}</h6>
-                                    <span class="deleteJournal" id={{id}}>X</span>
-                                    <p class="entry" id={{id}}>{{body}} </p>
-                                    <div class="divider" id="journal-divider"></div>
-                                </div>
-                                {{/each}}
+                            <span class="card-title center ">Tracker</span>
+                            <div class="divider">
                             </div>
                         </div>
                         <div class="card-action">
-                            <form class="col s12">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <textarea id="textarea1" class="materialize-textarea journal"></textarea>
-                                        <label for="textarea1">Share your thoughts</label>
-                                        <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
-                                    </div>
-                                </div>
-                            </form>
+                            {{!-- <input type="text" class="tracker" placeholder="Tracker Item">
+                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span> --}}
+                            <table class = "trackerTable">
+                                <tr>
+                                    <th>Tracker Item</th>
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                    <th>6</th>
+                                    <th>7</th>
+                                    <th>8</th>
+                                    <th>9</th>
+                                    <th>10</th>
+                                    <th>11</th>
+                                    <th>12</th>
+                                    <th>13</th>
+                                    <th>14</th>
+                                    <th>15</th>
+                                    <th>16</th>
+                                    <th>17</th>
+                                    <th>18</th>
+                                    <th>19</th>
+                                    <th>20</th>
+                                    <th>21</th>
+                                    <th>22</th>
+                                    <th>23</th>
+                                    <th>24</th>
+                                    <th>25</th>
+                                    <th>26</th>
+                                    <th>27</th>
+                                    <th>28</th>
+                                    <th>29</th>
+                                    <th>30</th>
+                                    <th>31</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                
+                            </table>
                         </div>
+
                     </div>
                 </div>
             </div>
-       <div class="section sectionForm" id="todaysForm">
-            
-                
-                <div class="col s12 m6 l3">
-                    <div class="card white">
-                        <div class="card-content gray-text text-darken-4">
-                            <span class="card-title center">TEST</span>
-                            <div class="divider"></div>
-                            <ul class="myUL">
-                                
-                                {{#each todays}}
-                                {{#if completed}}
-                                <span class="todo">
-                                    <li class="completed" id={{id}}>{{todo}}
-                                        <span class="deleteItem" id={{id}}>X</span></li>
-                                </span>
-                                {{else}}
-                                <span class="todo">
-                                    <li id={{id}}>{{todo}}
-                                        <span class="deleteItem" id={{id}}>X</span></li>
-                                </span>
-                                {{/if}}
-                                {{/each}}
-                            </ul>
+
+            <div class="row center testROWS">
+                <div class="section sectionForm" id="todaysForm">
+
+                    <div class="col s12 m6 l6">
+                        <div class="card white">
+                            <div class="card-content gray-text text-darken-4">
+                                <span class="card-title center">Today</span>
+                                <div class="divider"></div>
+                                <ul class="myUL">
+
+                                    {{#each todays}}
+                                    {{#if completed}}
+                                    <span class="todo">
+                                        <li class="completed" id={{id}}>{{todo}}
+                                            <span class="deleteItem" id={{id}}>X</span></li>
+                                    </span>
+                                    {{else}}
+                                    <span class="todo">
+                                        <li id={{id}}>{{todo}}
+                                            <span class="deleteItem" id={{id}}>X</span></li>
+                                    </span>
+                                    {{/if}}
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <input type="text" class="todo" placeholder="To-Do Item">
+                                <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
+                            </div>
                         </div>
-                        <div class="card-action">
-                            <input type="text" class="todo" placeholder="To-Do Item">
-                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
+                    </div>
+
+                </div>
+
+                <div class="section journalForm" id="journalsForm">
+
+                    <div class="col s12 m6 l6">
+                        <div class="card white">
+                            <div class="card-content gray-text text-darken-4">
+                                <span class="card-title center div">Journals</span>
+                                <div class="divider"></div>
+                                <div id="journal-entries">
+                                    {{#each journals}}
+                                    <div class="entry">
+                                        <h6 class="journal-title">{{createdAt}}</h6>
+                                        <span class="deleteJournal" id={{id}}>X</span>
+                                        <p class="entry" id={{id}}>{{body}} </p>
+                                        <div class="divider" id="journal-divider"></div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <form class="col s10">
+                                    <div class="row">
+                                        <div class="input-field ">
+                                            <textarea id="textarea1" class="materialize-textarea journal"></textarea>
+                                            <label for="textarea1">Share your thoughts</label>
+                                            <span
+                                                class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
+            </div>
         </div>
     </div>
-</div>
-</div>

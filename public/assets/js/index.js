@@ -15,7 +15,6 @@ $(".sectionForm .addbtn").on("click", function () {
       createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
       updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
   };
-
   $.ajax({
       method: "POST",
       url: `/api/${routePart}`,
@@ -58,7 +57,47 @@ console.log("routePart", routePart);
   });
 });
 
-//JOURNALFORM
+//TRACKERFORM
+$(".trackerForm .addbtn").on("click", function () {
+  var tracker = $(this).siblings(".tracker").val().trim(); // get value of todo field
+  // if no journal item is specified, throw alert message and break out
+  if (!tracker) {
+      alert("You must write something!");
+      return false;
+  }
+
+  var section = $(this).closest(".trackerForm").attr("id"); // get id of "form"
+  console.log(section);
+  var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
+  var body = {
+      itemTitle: tracker,
+      createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+      updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
+  };
+ 
+  $.ajax({
+      method: "POST",
+      url: `/api/${routePart}`,
+      data: body
+  }).then(function (response) {
+      location.reload();
+  });
+});
+
+$(".trackerForm .deleteTracker").on("click", function () {
+  var id = $(this).attr("id");
+  console.log("DELETE ITEM", id);
+  var section = $(this).closest(".trackerForm").attr("id");
+  var routePart = section.substring(0, section.length - 4);
+
+  $.ajax({
+      method: "DELETE",
+      url: `/api/${routePart}/${id}`
+  }).then(function (response) {
+      location.reload();
+  });
+});
+
 $(".journalForm .addbtn").on("click", function () {
   var journal = $(this).siblings(".journal").val().trim(); // get value of todo field
   // if no journal item is specified, throw alert message and break out

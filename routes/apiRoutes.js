@@ -54,6 +54,7 @@ module.exports = function (app) {
     });
     app.post("/api/todays", function (req, res) {
         console.log(req.body);
+        console.log(req.user);
         db.Todays.create({
             todo: req.body.todo,
             UserId: req.user.id
@@ -177,6 +178,50 @@ console.log("months PUT route hit");
             })
             .then(function (dbMonths) {
                 res.json(dbMonths);
+            });
+    });
+
+
+    //TRACKERS
+    app.get("/api/tracker", function (req, res) {
+        db.Trackers.findAll({}).then(function (dbTracker) {
+           
+            res.json(dbTracker);
+        });
+
+    });
+    app.post("/api/tracker", function (req, res) {
+        console.log(req.body);
+        db.Trackers.create({
+            itemTitle: req.body.itemTitle,
+            UserId: req.user.id
+        }).then(function (dbTracker) {
+            res.json(dbTracker);
+        });
+        res.status(200);
+
+    });
+    app.delete("/api/tracker/:id", function (req, res) {
+        db.Trackers.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(function (dbTracker) {
+                res.json(dbTracker);
+            });
+    })
+
+    app.put("/api/tracker", function (req, res) {
+        db.Trackers.update({
+            itemTitle: req.body.itemTitle
+        }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function (dbTracker) {
+                res.json(dbTracker);
             });
     });
 

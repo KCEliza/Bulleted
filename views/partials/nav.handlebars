@@ -2,13 +2,21 @@
   <div class="nav-wrapper container">
     <a href="/"><img src="/assets/images/Bulleted-logo.png" alt="Bulleted logo" id="logo-container"></a>
 
+    
     <ul class="right hide-on-med-and-down">
+       
+
+
       {{#if loggedOut}}
       <li><a href="/login">Login</a></li>
       <li><a href="/signup">Sign Up</a></li>
       {{/if}}
 
       {{#if loggedIn}}
+      {{!-- needs to link to one of the routes folders so this will generate stuff onto the page --}}
+      {{!-- <li class = "addBar"><a href = "#">+ Journal Entry</a></li> 
+       <li class = "addBar"><a href = "#">+ To-Do Item</a></li> 
+        <li class = "addBar"><a href = "#">+ Tracker Row</a></li> --}}
       <li><a href="/logout">Logout</a></li>
       {{/if}}
     </ul>

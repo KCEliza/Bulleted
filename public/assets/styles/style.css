@@ -1,4 +1,11 @@
 
+.clearfix::after{
+  clear: both;
+  content: "";
+  display: block;
+}
+
+
 .testROWS {
   background: red;
 }
@@ -299,4 +306,32 @@ textarea.materialize-textarea:focus:not([readonly]) + label{
 .section {
   padding: 0;
 }
+
+.addBar {
+  display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+
+.addBar ul{
+  list-style: none;
+  padding-bottom: 50px;
+  
+}
+.addBar li {
+  display: inline;  
+}
+
+/* Tracker table stuff */
+#trackerForm{
+  
+}
+
+#trackerForm td{
+border-right: 1px solid black;
+
+}
+#trackerForm td:first-child{
+  border-left: 1px solid black;
+}
+
 

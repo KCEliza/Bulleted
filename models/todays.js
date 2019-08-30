@@ -7,6 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    // title:{
+    //   type: DataTypes.STRING,
+    // },
     todo: {
       type: DataTypes.STRING,
     },
