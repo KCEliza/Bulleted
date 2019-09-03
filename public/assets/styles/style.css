@@ -322,9 +322,9 @@ textarea.materialize-textarea:focus:not([readonly]) + label{
 }
 
 /* Tracker table stuff */
-#trackerForm{
+/* #trackerForm{
   
-}
+} */
 
 #trackerForm td{
 border-right: 1px solid black;

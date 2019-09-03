@@ -1,15 +1,12 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const Todays = sequelize.define("Todays", {
+  const Todos = sequelize.define("Todos", {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    // title:{
-    //   type: DataTypes.STRING,
-    // },
     todo: {
       type: DataTypes.STRING,
     },
@@ -28,8 +25,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false
     }
   }, {});
-  Todays.associate = function(models) {
-    Todays.belongsTo(models.User, {foreignKey: "UserId", as: "user"});
+  Todos.associate = function(models) {
+    Todos.belongsTo(models.User, {foreignKey: "UserId", as: "user"});
   };
-  return Todays;
+  return Todos;
 };

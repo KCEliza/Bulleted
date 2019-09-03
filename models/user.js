@@ -4,7 +4,7 @@ var bcrypt = require("bcrypt");
 
 // Creating our User model
 // Set it as export because we will need it required on the server
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var User = sequelize.define("User", {
         // The email cannot be null, and must be a proper email before creation
         email: {
@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         fName: {
             type: DataTypes.STRING,
-            allowNull:false
+            allowNull: false
         },
         lname: {
             type: DataTypes.STRING,
@@ -32,21 +32,25 @@ module.exports = function(sequelize, DataTypes) {
 
     // Creating a custom method for our User model
     // This will check if an unhashed password entered by the user can be compared to the hased password stored in our database
-    User.prototype.validPassword = function(password) {
+    User.prototype.validPassword = function (password) {
         return bcrypt.compareSync(password, this.password);
     };
 
-    User.beforeCreate (user => {
+    User.beforeCreate(user => {
         user.password = bcrypt.hashSync(
             user.password, bcrypt.genSaltSync(10), null
         );
     });
-    User.associate = function(models){
-        User.hasMany(models.Journals, {as: "journals"}),
-        User.hasMany(models.Todays, {as: "todays"}),
-        User.hasMany(models.Weeks, {as: "weeks"}),
-        User.hasMany(models.Months, {as: "months"}),
-        User.hasMany(models.Trackers, {as: "trackers"})
+    User.associate = function (models) {
+        User.hasMany(models.Journals, {
+                as: "journals"
+            }),
+            User.hasMany(models.Todos, {
+                as: "todos"
+            }),
+            User.hasMany(models.Trackers, {
+                as: "trackers"
+            })
     };
     return User;
 };

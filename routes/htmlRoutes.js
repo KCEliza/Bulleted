@@ -49,16 +49,15 @@ module.exports = function(app) {
                 where: {
                     id: req.user.id
                 },
-                include: [{model: db.Journals, as: "journals"}, {model: db.Todays, as: "todays"}, {model: db.Weeks, as: "weeks"}, {model: db.Months, as: "months"}]
+                include: [{model: db.Journals, as: "journals"}, {model: db.Todos, as: "todos"}, {model:db.Trackers, as: "trackers"}]
             })
                 .then(function (membersPage) {
                     var hbsObject = {
                         loggedIn: true, 
                         loggedOut: false, 
-                        todays: membersPage.todays,
-                        weeks:membersPage.weeks,
-                        months:membersPage.months,
-                        journals:membersPage.journals
+                        todos: membersPage.todos,
+                        journals:membersPage.journals,
+                        trackers:membersPage.trackers
                     };
                     return res.render("dashboard", hbsObject);
                 });
