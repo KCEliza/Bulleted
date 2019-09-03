@@ -1,270 +1,158 @@
+//goes to models folder
 var db = require("../models");
+//authentication
 var passport = require("../config/passport");
 
 module.exports = function (app) {
-    //journal getting things
-    app.get("/api/journals", function (req, res) {
+    //Journal will get things here
+    app.get("api/journals", function (req, res) {
         db.Journals.findAll({}).then(function (dbJournal) {
-           
-            res.json(dbJournal);
-        });
-
+            res.json(dbJournal)
+        })
     });
-    app.post("/api/journals", function (req, res) {
-        console.log(req.body);
+    //Creates new journal entry
+    app.post("api/journals", function (req, res) {
         db.Journals.create({
             body: req.body.body,
             UserId: req.user.id
         }).then(function (dbJournal) {
-            res.json(dbJournal);
-        });
+            res.json(dbJournal)
+        })
         res.status(200);
-
     });
+    //Deletes journal entry based on ID of entry
     app.delete("/api/journals/:id", function (req, res) {
         db.Journals.destroy({
             where: {
                 id: req.params.id
             }
+        }).then(function (dbJournal) {
+            res.json(dbJournal)
         })
-            .then(function (dbJournal) {
-                res.json(dbJournal);
-            });
-    })
-
+    });
+    //Update the journal entries
     app.put("/api/journals", function (req, res) {
         db.Journals.update({
             body: req.body.body
         }, {
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(function (dbJournal) {
-                res.json(dbJournal);
-            });
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbJournal) {
+            res.json(dbJournal)
+        })
     });
 
-    //todo Today list
-    app.get("/api/todays", function (req, res) {
-        db.Todays.findAll({}).then(function (dbTodays) {
-            res.json(dbTodays);
-        });
-
+    //--------------------------------------
+    //--------------------------------------
+    //Todo will get things here
+    app.get("/api/todos", function (req, res) {
+        db.Todos.findAll({}).then(function (dbTodos) {
+            res.json(dbTodos);
+        })
     });
-    app.post("/api/todays", function (req, res) {
-        console.log(req.body);
-        console.log(req.user);
-        db.Todays.create({
+    //Creates new todo item
+    app.post("/api/todos", function (req, res) {
+        db.Todos.create({
             todo: req.body.todo,
-            UserId: req.user.id
-        }).then(function (dbTodays) {
-            res.json(dbTodays);
+            UserId: req.userid
+        }).then(function (dbTodo) {
+            res.json(dbTodo)
         });
         res.status(200);
-
     });
-    app.delete("/api/todays/:id", function (req, res) {
+    //Deletes todo items
+    app.delete("/api/todos/:id", function (req, res) {
         db.Todays.destroy({
             where: {
                 id: req.params.id
             }
-        })
-            .then(function (dbTodays) {
+        }).then(function (dbTodays) {
                 res.json(dbTodays);
-            });
-    })
-
-    app.put("/api/todays/:id", function (req, res) {
-        var completed = req.body.completed === "true"; // true or false
-        db.Todays.update({
-            completed: completed
-        }, {
-                where: {
-                    id: req.params.id
-                }
             })
-            .then(function (dbTodays) {
-                res.json(dbTodays);
-            });
     });
-
-    //todo Weeks List
-    app.get("/api/weeks", function (req, res) {
-        db.Weeks.findAll({}).then(function (dbWeeks) {
-            res.json(dbWeeks);
-        });
-
-    });
-    app.post("/api/weeks", function (req, res) {
-        console.log(req.body);
-        db.Weeks.create({
-            todo: req.body.todo,
-            UserId: req.user.id
-        }).then(function (dbWeeks) {
-            res.json(dbWeeks);
-        });
-        res.status(200);
-
-    });
-    app.delete("/api/weeks/:id", function (req, res) {
-        db.Weeks.destroy({
+    //updates todo items
+    app.put("/api/todos/:id", function(req, res){
+        var completed = req.body.completed === "true";
+        db.Todos.update({
+            completed
+        }, {
             where: {
-                id: req.params.id
+                id:req.params.id
             }
+        }).then(function(dbTodos){
+            res.json(dbTodos)
         })
-            .then(function (dbWeeks) {
-                res.json(dbWeeks);
-            });
-    })
-
-    app.put("/api/weeks/:id", function (req, res) {
-        console.log("weeks PUT route hit");
-
-        var completed = req.body.completed === "true"; // true or false
-
-        db.Weeks.update({
-            completed: completed
-        }, {
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(function (dbWeeks) {
-                res.json(dbWeeks);
-            });
     });
 
-    //todo Months List
-    app.get("/api/months", function (req, res) {
-        db.Months.findAll({}).then(function (dbMonths) {
-            res.json(dbMonths);
-        });
-
-    });
-    app.post("/api/months", function (req, res) {
-        console.log(req.body);
-        db.Months.create({
-            todo: req.body.todo,
-            UserId: req.user.id
-        }).then(function (dbMonths) {
-            res.json(dbMonths);
-        });
-        res.status(200);
-
-    });
-    app.delete("/api/months/:id", function (req, res) {
-        db.Months.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-            .then(function (dbMonths) {
-                res.json(dbMonths);
-            });
-    })
-
-    app.put("/api/months/:id", function (req, res) {
-console.log("months PUT route hit");
-
-        var completed = req.body.completed === "true"; // true or false
-
-        db.Months.update({
-            completed: completed
-        }, {
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(function (dbMonths) {
-                res.json(dbMonths);
-            });
-    });
-
-
-    //TRACKERS
-    app.get("/api/tracker", function (req, res) {
-        db.Trackers.findAll({}).then(function (dbTracker) {
-           
+    //--------------------------------------
+    //--------------------------------------
+    //Tracker will get things here
+    app.get("/api/tracker", function(req, res){
+        db.Trackers.findAll({}).then(function(dbTracker){
             res.json(dbTracker);
-        });
-
+        })
     });
-    app.post("/api/tracker", function (req, res) {
-        console.log(req.body);
+    //create new tracker rows
+    app.post("/api/tracker", function(req, res){
         db.Trackers.create({
             itemTitle: req.body.itemTitle,
             UserId: req.user.id
-        }).then(function (dbTracker) {
-            res.json(dbTracker);
-        });
+        }).then(function(dbTracker){
+            res.json(dbTracker)
+        })
         res.status(200);
-
     });
-    app.delete("/api/tracker/:id", function (req, res) {
+    //delete tracker items
+    app.delete("/api/tracker/:id", function(req, res){
         db.Trackers.destroy({
-            where: {
+            where:{
                 id: req.params.id
             }
+        }).then(function(dbTracker){
+            res.json(dbTracker)
         })
-            .then(function (dbTracker) {
-                res.json(dbTracker);
-            });
-    })
-
-    app.put("/api/tracker", function (req, res) {
+    });
+    app.put("/api/tracker/:id", function(req, res){
         db.Trackers.update({
             itemTitle: req.body.itemTitle
         }, {
-                where: {
-                    id: req.params.id
-                }
-            })
-            .then(function (dbTracker) {
-                res.json(dbTracker);
-            });
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbTracker){
+            res.json(dbTracker);
+        })
+    })
+
+    //--------------------------------------
+    //--------------------------------------
+    //Authentication and User information
+    app.post("/api/login", passport.authenticate("local"), function(req, res){
+        res.redirect("/members")
     });
-
-
-
-
-    // Using the passport.authenticate middleware with our local strategy.  If the user has valid login credentials, send them to the members page, otherwise the user will be sent an error
-    app.post("/api/login", passport.authenticate("local"), function (req, res) {
-        // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request, so we're sending the user back the routhe to the members page because the redirect will happen on the front end. They won't get this or even be able to access this page if they aren't authed
-        res.redirect("/members");
-    });
-
-    // Route for siging up a user. The user's password is automatically hashed and stored securely thanks to how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in, otherwise send back an error
+    //signing up a user
     app.post("/api/signup", (req, res) => {
-        let {
-            fName,
-            lname,
-            email,
-            password,
-            password2
+        let{
+            fName, lName, email, password, password2
         } = req.body;
-        console.log(req.body.fName);
-        console.log(req.body.lname);
-        console.log(req.body.email);
-        console.log(req.body.password);
-        console.log(req.body.password2);
         let errors = [];
-        if (!fName || !lname || !email || !password || !password2) {
+        if(!fName || !lName || !email || !password || !password2){
             errors.push({
-                message: "Please fill in all fields"
-            });
+                message: "Please fill in all fields to continue"
+            })
         }
-        if (password !== password2) {
+        if(password !== password2){
             errors.push({
                 message: "Passwords do not match"
-            });
+            })
         }
-        if (password.length < 6) {
+        if(password.length < 6){
             errors.push({
-                message: "Password needs to be at least 6 characters long"
-            });
+                message: "Password must be at least 6 characters"
+            })
         }
-        if (errors.length > 0) {
+        if(errors.length > 0) {
             console.log(errors);
             res.render("signup", {
                 errors,
@@ -281,7 +169,6 @@ console.log("months PUT route hit");
                 fName: req.body.fName,
                 lname: req.body.lname
             }).then(function (dbUser) {
-                console.log(dbUser);
                 // redirect
                 req.flash("success_message", "You are now signed up and can log in");
                 res.redirect("/login");
@@ -306,4 +193,7 @@ console.log("months PUT route hit");
             });
         }
     });
-};
+    
+
+
+}

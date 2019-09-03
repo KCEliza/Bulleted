@@ -5,12 +5,6 @@
   display: block;
 }
 
-
-.testROWS {
-  background: red;
-}
-
-
 body, html {
   height: 100%;
 }
@@ -62,6 +56,11 @@ p {
 }
 .footerP {
   padding-top: 0;
+  background-color: #ffc107 !important;
+}
+.logo{
+  height: 40px;
+  width: 40px;
 }
 
 .sidenav-trigger {
@@ -99,22 +98,9 @@ p {
 }
 
 @media only screen and (max-width : 992px) {
-  /* .parallax-container .section {
-    position: absolute;
-    top: 50%;
-  }
-  #index-banner .section {
-    top: 50%;
-  } */
   #logo-container {
     left: 50%;
   }
-}
-
-@media only screen and (max-width : 600px) {
-  /* #index-banner .section {
-    top: 50%;
-  } */
 }
 
 .icon-block {
@@ -126,6 +112,7 @@ p {
 
 footer.page-footer {
   margin: 0;
+  
 }
 
 
@@ -333,5 +320,6 @@ border-right: 1px solid black;
 #trackerForm td:first-child{
   border-left: 1px solid black;
 }
+
 
 

@@ -90,6 +90,17 @@ $(".trackerForm .addbtn").on("click", function () {
         location.reload();
     });
   });
+//   $("#trackerForm .dayOne").on("click", function(){
+//       if(dayOne = false){
+//         dayOne = true;
+//       }
+//       else if(dayOne = true){
+//           dayOne = "NA"
+//       }
+//       else{
+//           dayOne = false
+//       }
+//   })
 $(".trackerForm .deleteTracker").on("click", function () {
   var id = $(this).attr("id");
   console.log("DELETE ITEM", id);

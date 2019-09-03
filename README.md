@@ -39,7 +39,7 @@ Bulleted can be used as a personal journal as well as daily, weekly and monthly 
 * Weather API
 * Moon Phases / Astrology / Mercury Retrograde Alert
 
-## Authors and acknowledgment
+## Version 1.0 came from
 [Carolyn Floyd](https://github.com/DiabloAzul33) - Backend, Database
 
 [Casey Eickhoff](https://github.com/caseyisonit) - Frontend and Routing
