@@ -21,12 +21,10 @@
                             <div class="divider">
                             </div>
                         </div>
-
-                        {{!-- <input type="text" class="tracker" placeholder="Tracker Item">
-                            <span class="addbtn btn-small waves-effect waves-light grey darken-4">Add</span> --}}
                         {{#each trackers}}
                         <table class="trackerTable" data-TrackerID={{id}}>
                             <tr>
+                                <th></th>
                                 <th></th>
                                 <th>1</th>
                                 <th>2</th>
@@ -58,14 +56,13 @@
                                 <th>28</th>
                                 <th>29</th>
                                 <th>30</th>
-                                <th>31</th>
                             </tr>
                             <div class="card-action">
 
                                 <tr>
-
+                                    <td class="deleteTracker" id={{id}}>X</td>
                                     <td>{{itemTitle}}</td>
-                                    <td id="dayOne"></td>
+                                    <td id="dayOne"><input type="checkbox" id={{id}} value="on" /></td>
                                     <td id="dayTwo"></td>
                                     <td id="dayThree"></td>
                                     <td id="dayFour"></td>
@@ -95,7 +92,6 @@
                                     <td id="dayTwentyEight"></td>
                                     <td id="dayTwentyNine"></td>
                                     <td id="dayThirty"></td>
-                                    <td id="dayThirtyOne"></td>
 
                                 </tr>
 

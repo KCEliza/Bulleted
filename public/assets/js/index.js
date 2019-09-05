@@ -3,24 +3,24 @@ $(".sectionForm .addbtn").on("click", function () {
   console.log(todo);
   // if no todo item is specified, throw alert message and break out
   if (!todo) {
-      alert("Add your todo item to continue.");
-      return false;
+    alert("Add your todo item to continue.");
+    return false;
   }
 
   var section = $(this).closest(".sectionForm").attr("id"); // get id of "form"
   console.log(section);
   var routePart = section.substring(0, section.length - 4);
   var body = {
-      todo,
-      createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
-      updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
+    todo,
+    createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+    updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
   };
   $.ajax({
-      method: "POST",
-      url: `/api/${routePart}`,
-      data: body
+    method: "POST",
+    url: `/api/${routePart}`,
+    data: body
   }).then(function (response) {
-      location.reload();
+    location.reload();
   });
 });
 
@@ -30,60 +30,60 @@ $(".sectionForm:not(#journalsForm) .deleteItem").on("click", function () {
   var routePart = section.substring(0, section.length - 4); //IS THIS PART NECESSARY IN ALL OF THESE WITH ONLY ONE TODO LIST
 
   $.ajax({
-      method: "DELETE",
-      url: `/api/${routePart}/${id}`
+    method: "DELETE",
+    url: `/api/${routePart}/${id}`
   }).then(function (response) {
-      location.reload();
+    location.reload();
   });
 });
 
 
 
 $(".sectionForm li").on("click", function () {
-    var id = $(this).attr("id"); // id of todo to toggle
+  var id = $(this).attr("id"); // id of todo to toggle
   var status = $(this).hasClass("completed"); // completed: true or false
   var section = $(this).closest(".sectionForm").attr("id"); // get id of "form"
   var routePart = section.substring(0, section.length - 4); //IS THIS PART NECESSARY IN ALL OF THESE WITH ONLY ONE TODO LIST
-console.log("id", id);
+  console.log("id", id);
   console.log("section", section);
-console.log("routePart", routePart);
+  console.log("routePart", routePart);
 
   $.ajax({
-      method: "PUT",
-      url: `/api/${routePart}/${id}`,
-      data: { completed: !status }
+    method: "PUT",
+    url: `/api/${routePart}/${id}`,
+    data: {
+      completed: !status
+    }
   }).then(function (response) {
     // console.log("response", response);
 
-      location.reload();
+    location.reload();
   });
 });
 //-----------------------------------------------------
 //-----------------------------------------------------
 //TRACKER STUFF
 $(".trackerForm .addbtn").on("click", function () {
-    var id = $(this).attr("id");
-    var tracker = $(this).siblings(".tracker").val().trim();
-    var status = $(this).hasClass("on");
-    if (!tracker) {
-        alert("Add your tracker item to continue.");
-        return false;
-    }
-  
-    var section = $(this).closest(".trackerForm").attr("id"); // get id of "form"
-    console.log(section);
-    var routePart = section.substring(0, section.length - 4);
-    var body = {
-        itemTitle: tracker,
-        createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
-        updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
-    };
-    $.ajax({
-      method: "POST",
-      url: `/api/${routePart}`,
-      data: body
+  var tracker = $(this).siblings(".tracker").val().trim();
+  if (!tracker) {
+    alert("Add your tracker item to continue.");
+    return false;
+  }
+
+  var section = $(this).closest(".trackerForm").attr("id"); // get id of "form"
+  console.log(section);
+  var routePart = section.substring(0, section.length - 4);
+  var body = {
+    itemTitle: tracker,
+    createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+    updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
+  };
+  $.ajax({
+    method: "POST",
+    url: `/api/${routePart}`,
+    data: body
   }).then(function (response) {
-      location.reload();
+    location.reload();
   });
 });
 
@@ -95,30 +95,32 @@ $(".trackerForm .deleteTracker").on("click", function () {
   var routePart = section.substring(0, section.length - 4);
 
   $.ajax({
-      method: "DELETE",
-      url: `/api/${routePart}/${id}`
+    method: "DELETE",
+    url: `/api/${routePart}/${id}`
   }).then(function (response) {
-      location.reload();
+    location.reload();
   });
 });
 
 
-  $(".trackerForm td").on("click", function () {
-    var id = $(this).attr("id"); // id of todo to toggle
-  var status = $(this).hasClass("dayOne"); // completed: true or false
+$(".trackerForm td").on("click", function () {
+  var id = $(this).attr("id"); // id of todo to toggle
+  var status = $(this).hasClass("on"); // completed: true or false
   var section = $(this).closest(".trackerForm").attr("id"); // get id of "form"
   var routePart = section.substring(0, section.length - 4); //IS THIS PART NECESSARY IN ALL OF THESE WITH ONLY ONE TODO LIST
-console.log("id", id);
+  console.log("id", id);
   console.log("section", section);
-console.log("routePart", routePart);
+  console.log("routePart", routePart);
 
   $.ajax({
-      method: "PUT",
-      url: `/api/${routePart}/${id}`,
-      data: { dayOne: !status }
+    method: "PUT",
+    url: `/api/${routePart}/${id}`,
+    data: {
+      on: !status
+    }
   }).then(function (response) {
 
-      location.reload();
+    location.reload();
   });
 
 });
@@ -129,25 +131,25 @@ $(".journalForm .addbtn").on("click", function () {
   var journal = $(this).siblings(".journal").val().trim(); // get value of todo field
   // if no journal item is specified, throw alert message and break out
   if (!journal) {
-      alert("You must write something!");
-      return false;
+    alert("You must write something!");
+    return false;
   }
 
   var section = $(this).closest(".journalForm").attr("id"); // get id of "form"
   console.log(section);
   var routePart = section.substring(0, section.length - 4);
   var body = {
-      body: journal,
-      createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
-      updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
+    body: journal,
+    createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
+    updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
   };
 
   $.ajax({
-      method: "POST",
-      url: `/api/${routePart}`,
-      data: body
+    method: "POST",
+    url: `/api/${routePart}`,
+    data: body
   }).then(function (response) {
-      location.reload();
+    location.reload();
   });
 });
 
@@ -158,19 +160,18 @@ $(".journalForm .deleteJournal").on("click", function () {
   var routePart = section.substring(0, section.length - 4);
 
   $.ajax({
-      method: "DELETE",
-      url: `/api/${routePart}/${id}`
+    method: "DELETE",
+    url: `/api/${routePart}/${id}`
   }).then(function (response) {
-      location.reload();
+    location.reload();
   });
 });
 
 var allTitles = $(".journal-title");
 console.log("all titles:", allTitles);
 
-for (var i = 0; i < allTitles.length; i++){
-    var titleText = $(allTitles[i]).text().split(" ").splice(0, 4).join(" "); //IS THIS PART NECESSARY IN ALL OF THESE WITH ONLY ONE TODO LIST
-    console.log("title text", titleText);
-    $(allTitles[i]).text(titleText);
+for (var i = 0; i < allTitles.length; i++) {
+  var titleText = $(allTitles[i]).text().split(" ").splice(0, 4).join(" "); //IS THIS PART NECESSARY IN ALL OF THESE WITH ONLY ONE TODO LIST
+  console.log("title text", titleText);
+  $(allTitles[i]).text(titleText);
 }
- 
