@@ -37,6 +37,8 @@ $(".sectionForm:not(#journalsForm) .deleteItem").on("click", function () {
   });
 });
 
+
+
 $(".sectionForm li").on("click", function () {
     var id = $(this).attr("id"); // id of todo to toggle
   var status = $(this).hasClass("completed"); // completed: true or false
@@ -56,7 +58,8 @@ console.log("routePart", routePart);
       location.reload();
   });
 });
-
+//-----------------------------------------------------
+//-----------------------------------------------------
 //TRACKER STUFF
 $(".trackerForm .addbtn").on("click", function () {
     var id = $(this).attr("id");
@@ -76,31 +79,15 @@ $(".trackerForm .addbtn").on("click", function () {
         updatedAt: moment().format("YYYY-MM-DD HH:mm:ss")
     };
     $.ajax({
-        method: "POST",
-        url: `/api/${routePart}`,
-        data: {on: !status}
-    }).then(function (response) {
-        location.reload();
-    });
-    $.ajax({
-        method: "POST",
-        url: `/api/${routePart}`,
-        data: body
-    }).then(function (response) {
-        location.reload();
-    });
+      method: "POST",
+      url: `/api/${routePart}`,
+      data: body
+  }).then(function (response) {
+      location.reload();
   });
-//   $("#trackerForm .dayOne").on("click", function(){
-//       if(dayOne = false){
-//         dayOne = true;
-//       }
-//       else if(dayOne = true){
-//           dayOne = "NA"
-//       }
-//       else{
-//           dayOne = false
-//       }
-//   })
+});
+
+
 $(".trackerForm .deleteTracker").on("click", function () {
   var id = $(this).attr("id");
   console.log("DELETE ITEM", id);
@@ -115,6 +102,28 @@ $(".trackerForm .deleteTracker").on("click", function () {
   });
 });
 
+
+  $(".trackerForm td").on("click", function () {
+    var id = $(this).attr("id"); // id of todo to toggle
+  var status = $(this).hasClass("dayOne"); // completed: true or false
+  var section = $(this).closest(".trackerForm").attr("id"); // get id of "form"
+  var routePart = section.substring(0, section.length - 4); //IS THIS PART NECESSARY IN ALL OF THESE WITH ONLY ONE TODO LIST
+console.log("id", id);
+  console.log("section", section);
+console.log("routePart", routePart);
+
+  $.ajax({
+      method: "PUT",
+      url: `/api/${routePart}/${id}`,
+      data: { dayOne: !status }
+  }).then(function (response) {
+
+      location.reload();
+  });
+
+});
+//-----------------------------------------------------
+//-----------------------------------------------------
 //JOURNAL STUFF
 $(".journalForm .addbtn").on("click", function () {
   var journal = $(this).siblings(".journal").val().trim(); // get value of todo field
@@ -126,7 +135,7 @@ $(".journalForm .addbtn").on("click", function () {
 
   var section = $(this).closest(".journalForm").attr("id"); // get id of "form"
   console.log(section);
-  var routePart = section.substring(0, section.length - 4); // get either 'todays', 'weeks', or 'months' depending
+  var routePart = section.substring(0, section.length - 4);
   var body = {
       body: journal,
       createdAt: moment().format("YYYY-MM-DD HH:mm:ss"),
@@ -164,19 +173,4 @@ for (var i = 0; i < allTitles.length; i++){
     console.log("title text", titleText);
     $(allTitles[i]).text(titleText);
 }
-
-// Click events
-$(function () {
-  $("#loginButton").on("click", function () {
-      window.location.replace("http://localhost:8000/login");
-  });
-  $("#signupButton").on("click", function () {
-      window.location.replace("http://localhost:8000/signup");
-  });
-  $("#startButton").on("click", function () {
-      window.location.replace("http://localhost:8000/signup");
-  });
-  $("#goToUserPage").on("click", function () {
-      window.location.replace("http://localhost:8000/members");
-  });
-});
+ 

@@ -4,43 +4,49 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function (app) {
-    //Journal will get things here
-    app.get("api/journals", function (req, res) {
+    //get the journal entries
+    app.get("/api/journals", function (req, res) {
         db.Journals.findAll({}).then(function (dbJournal) {
-            res.json(dbJournal)
-        })
+            res.json(dbJournal);
+        });
+
     });
-    //Creates new journal entry
-    app.post("api/journals", function (req, res) {
+    //create new entries
+    app.post("/api/journals", function (req, res) {
+        console.log(req.body);
         db.Journals.create({
             body: req.body.body,
             UserId: req.user.id
         }).then(function (dbJournal) {
-            res.json(dbJournal)
-        })
+            res.json(dbJournal);
+        });
         res.status(200);
+
     });
-    //Deletes journal entry based on ID of entry
+    //delete journal entries
     app.delete("/api/journals/:id", function (req, res) {
         db.Journals.destroy({
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbJournal) {
-            res.json(dbJournal)
-        })
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function (dbJournal) {
+                res.json(dbJournal);
+            })
     });
-    //Update the journal entries
+
+    //journal entries update
     app.put("/api/journals", function (req, res) {
         db.Journals.update({
-            body: req.body.body
-        }, {
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbJournal) {
-            res.json(dbJournal)
-        })
+                body: req.body.body
+            }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(function (dbJournal) {
+                res.json(dbJournal);
+            })
     });
 
     //--------------------------------------
@@ -49,78 +55,82 @@ module.exports = function (app) {
     app.get("/api/todos", function (req, res) {
         db.Todos.findAll({}).then(function (dbTodos) {
             res.json(dbTodos);
-        })
+        });
+
     });
     //Creates new todo item
     app.post("/api/todos", function (req, res) {
+
         db.Todos.create({
             todo: req.body.todo,
-            UserId: req.userid
-        }).then(function (dbTodo) {
-            res.json(dbTodo)
+            UserId: req.user.id
+        }).then(function (dbTodos) {
+            res.json(dbTodos);
         });
         res.status(200);
+
     });
     //Deletes todo items
     app.delete("/api/todos/:id", function (req, res) {
-        db.Todays.destroy({
+        db.Todos.destroy({
             where: {
                 id: req.params.id
             }
-        }).then(function (dbTodays) {
-                res.json(dbTodays);
-            })
-    });
+        }).then(function (dbTodos) {
+            res.json(dbTodos);
+        });
+    })
     //updates todo items
-    app.put("/api/todos/:id", function(req, res){
-        var completed = req.body.completed === "true";
+    app.put("/api/todos/:id", function (req, res) {
+        var completed = req.body.completed === "true"; // true or false
         db.Todos.update({
-            completed
+            completed: completed
         }, {
             where: {
-                id:req.params.id
+                id: req.params.id
             }
-        }).then(function(dbTodos){
-            res.json(dbTodos)
-        })
+        }).then(function (dbTodos) {
+            res.json(dbTodos);
+        });
     });
 
     //--------------------------------------
     //--------------------------------------
     //Tracker will get things here
-    app.get("/api/tracker", function(req, res){
-        db.Trackers.findAll({}).then(function(dbTracker){
+    app.get("/api/tracker", function (req, res) {
+        db.Trackers.findAll({}).then(function (dbTracker) {
             res.json(dbTracker);
         })
     });
     //create new tracker rows
-    app.post("/api/tracker", function(req, res){
+    app.post("/api/tracker", function (req, res) {
+
         db.Trackers.create({
             itemTitle: req.body.itemTitle,
             UserId: req.user.id
-        }).then(function(dbTracker){
+        }).then(function (dbTracker) {
             res.json(dbTracker)
         })
         res.status(200);
     });
     //delete tracker items
-    app.delete("/api/tracker/:id", function(req, res){
+    app.delete("/api/tracker/:id", function (req, res) {
         db.Trackers.destroy({
-            where:{
+            where: {
                 id: req.params.id
             }
-        }).then(function(dbTracker){
+        }).then(function (dbTracker) {
             res.json(dbTracker)
         })
     });
-    app.put("/api/tracker/:id", function(req, res){
+    app.put("/api/tracker/:id", function (req, res) {
         db.Trackers.update({
-            itemTitle: req.body.itemTitle
+            dayOne: req.body.dayOne
         }, {
             where: {
                 id: req.params.id
             }
-        }).then(function(dbTracker){
+        }).then(function (dbTracker) {
             res.json(dbTracker);
         })
     })
@@ -128,31 +138,35 @@ module.exports = function (app) {
     //--------------------------------------
     //--------------------------------------
     //Authentication and User information
-    app.post("/api/login", passport.authenticate("local"), function(req, res){
+    app.post("/api/login", passport.authenticate("local"), function (req, res) {
         res.redirect("/members")
     });
     //signing up a user
     app.post("/api/signup", (req, res) => {
-        let{
-            fName, lName, email, password, password2
+        let {
+            fName,
+            lName,
+            email,
+            password,
+            password2
         } = req.body;
         let errors = [];
-        if(!fName || !lName || !email || !password || !password2){
+        if (!fName || !lName || !email || !password || !password2) {
             errors.push({
                 message: "Please fill in all fields to continue"
             })
         }
-        if(password !== password2){
+        if (password !== password2) {
             errors.push({
                 message: "Passwords do not match"
             })
         }
-        if(password.length < 6){
+        if (password.length < 6) {
             errors.push({
                 message: "Password must be at least 6 characters"
             })
         }
-        if(errors.length > 0) {
+        if (errors.length > 0) {
             console.log(errors);
             res.render("signup", {
                 errors,
@@ -193,7 +207,7 @@ module.exports = function (app) {
             });
         }
     });
-    
+
 
 
 }

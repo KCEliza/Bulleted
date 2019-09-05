@@ -322,4 +322,7 @@ border-right: 1px solid black;
 }
 
 
-
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked{
+  opacity: 1;
+  position: relative;
+}
