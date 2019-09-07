@@ -20,7 +20,7 @@ body {
 }
 
 .wrapper {
-  min-height: calc(100vh - 300px);
+  /* min-height: calc(100vh - 300px); */
   flex: 1;
 }
 
@@ -73,7 +73,7 @@ p {
 }
 
 .parallax-container {
-  /* min-height: 380px; */
+  min-height: 380px;
   line-height: 0;
   height: 100%;
   background-position: center;
@@ -322,4 +322,9 @@ border-right: 1px solid black;
 
 .toggle{
   background-color: #ffc107;
+}
+
+.nav-wrapper ul:not(.sidenav){
+  position: relative;
+  z-index: 1;
 }
