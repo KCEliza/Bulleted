@@ -21,6 +21,7 @@
                             <div class="divider">
                             </div>
                         </div>
+                        <div class = "clickArea">
                         {{#each trackers}}
                         <table class="trackerTable" data-TrackerID={{id}}>
                             <tr>
@@ -62,41 +63,162 @@
                                 <tr>
                                     <td class="deleteTracker" id={{id}}>X</td>
                                     <td>{{itemTitle}}</td>
-                                    <td id="dayOne"><input type="checkbox" id={{id}} value="on" /></td>
-                                    <td id="dayTwo"></td>
-                                    <td id="dayThree"></td>
-                                    <td id="dayFour"></td>
-                                    <td id="dayFive"></td>
-                                    <td id="daySix"></td>
-                                    <td id="daySeven"></td>
-                                    <td id="dayEight"></td>
-                                    <td id="dayNine"></td>
-                                    <td id="dayTen"></td>
-                                    <td id="dayEleven"></td>
-                                    <td id="dayTwelve"></td>
-                                    <td id="dayThirteen"></td>
-                                    <td id="dayFourteen"></td>
-                                    <td id="dayFifteen"></td>
-                                    <td id="daySixteen"></td>
-                                    <td id="daySeventeen"></td>
-                                    <td id="dayEighteen"></td>
-                                    <td id="dayNineteen"></td>
-                                    <td id="dayTwenty"></td>
-                                    <td id="dayTwentyOne"></td>
-                                    <td id="dayTwentyTwo"></td>
-                                    <td id="dayTwentyThree"></td>
-                                    <td id="dayTwentyFour"></td>
-                                    <td id="dayTwentyFive"></td>
-                                    <td id="dayTwentySix"></td>
-                                    <td id="dayTwentySeven"></td>
-                                    <td id="dayTwentyEight"></td>
-                                    <td id="dayTwentyNine"></td>
-                                    <td id="dayThirty"></td>
+                                    {{#if dayOne}}
+                                    <td class="day toggle" value = "{{id}}_dayOne"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayOne"></td>
+                                    {{/if}}
+                                    {{#if dayTwo}}
+                                    <td class="day toggle" value = "{{id}}_dayTwo"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwo"></td>
+                                    {{/if}}
+                                    {{#if dayThree}}
+                                    <td class="day toggle" value = "{{id}}_dayThree"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayThree"></td>
+                                    {{/if}}
+                                    {{#if dayFour}}
+                                    <td class="day toggle" value = "{{id}}_dayFour"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayFour"></td>
+                                    {{/if}}
+                                    {{#if dayFive}}
+                                    <td class="day toggle" value = "{{id}}_dayFive"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayFive"></td>
+                                    {{/if}}
+                                    {{#if daySix}}
+                                    <td class="day toggle" value = "{{id}}_daySix"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_daySix"></td>
+                                    {{/if}}
+                                    {{#if daySeven}}
+                                    <td class="day toggle" value = "{{id}}_daySeven"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_daySeven"></td>
+                                    {{/if}}
+                                    {{#if dayEight}}
+                                    <td class="day toggle" value = "{{id}}_dayEight"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayEight"></td>
+                                    {{/if}}
+                                    {{#if dayNine}}
+                                    <td class="day toggle" value = "{{id}}_dayNine"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayNine"></td>
+                                    {{/if}}
+                                    {{#if dayTen}}
+                                    <td class="day toggle" value = "{{id}}_dayTen"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTen"></td>
+                                    {{/if}}
+                                    {{#if dayEleven}}
+                                    <td class="day toggle" value = "{{id}}_dayEleven"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayEleven"></td>
+                                    {{/if}}
+                                    {{#if dayTwelve}}
+                                    <td class="day toggle" value = "{{id}}_dayTwelve"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwelve"></td>
+                                    {{/if}}
+                                    {{#if dayThirteen}}
+                                    <td class="day toggle" value = "{{id}}_dayThirteen"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayThirteen"></td>
+                                    {{/if}}
+                                    {{#if dayFourteen}}
+                                    <td class="day toggle" value = "{{id}}_dayFourteen"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayFourteen"></td>
+                                    {{/if}}
+                                    {{#if dayFifteen}}
+                                    <td class="day toggle" value = "{{id}}_dayFifteen"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayFifteen"></td>
+                                    {{/if}}
+                                    {{#if daySixteen}}
+                                    <td class="day toggle" value = "{{id}}_daySixteen"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_daySixteen"></td>
+                                    {{/if}}
+                                    {{#if daySeventeen}}
+                                    <td class="day toggle" value = "{{id}}_daySeventeen"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_daySeventeen"></td>
+                                    {{/if}}
+                                    {{#if dayEighteen}}
+                                    <td class="day toggle" value = "{{id}}_dayEighteen"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayEighteen"></td>
+                                    {{/if}}
+                                    {{#if dayNineteen}}
+                                    <td class="day toggle" value = "{{id}}_dayNineteen"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayNineteen"></td>
+                                    {{/if}}
+                                    {{#if dayTwenty}}
+                                    <td class="day toggle" value = "{{id}}_dayTwenty"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwenty"></td>
+                                    {{/if}}
+                                    {{#if dayTwentyOne}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentyOne"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentyOne"></td>
+                                    {{/if}}
+                                    {{#if dayTwentyTwo}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentyTwo"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentyTwo"></td>
+                                    {{/if}}
+                                    {{#if dayTwentyThree}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentyThree"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentyThree"></td>
+                                    {{/if}}
+                                    {{#if dayTwentyFour}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentyFour"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentyFour"></td>
+                                    {{/if}}
+                                    {{#if dayTwentyFive}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentyFive"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentyFive"></td>
+                                    {{/if}}
+                                    {{#if dayTwentySix}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentySix"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentySix"></td>
+                                    {{/if}}
+                                    {{#if dayTwentySeven}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentySeven"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentySeven"></td>
+                                    {{/if}}
+                                    {{#if dayTwentyEight}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentyEight"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentyEight"></td>
+                                    {{/if}}
+                                    {{#if dayTwentyNine}}
+                                    <td class="day toggle" value = "{{id}}_dayTwentyNine"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayTwentyNine"></td>
+                                    {{/if}}
+                                    {{#if dayThirty}}
+                                    <td class="day toggle" value = "{{id}}_dayThirty"></td>
+                                    {{else}}
+                                    <td class="day" value = "{{id}}_dayThirty"></td>
+                                    {{/if}}
 
                                 </tr>
 
                         </table>
                         {{/each}}
+                        </div>
 
                     </div>
                     <div>

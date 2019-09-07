@@ -124,11 +124,12 @@ module.exports = function (app) {
         })
     });
     app.put("/api/tracker/:id", function (req, res) {
+        var id = req.params.id.split("_");
         db.Trackers.update({
-            dayOne: req.body.dayOne
+            [id[1]]: true //FIGURE OUT SYNTAX
         }, {
             where: {
-                id: req.params.id
+                id: id[0]
             }
         }).then(function (dbTracker) {
             res.json(dbTracker);
@@ -171,7 +172,7 @@ module.exports = function (app) {
             res.render("signup", {
                 errors,
                 fName,
-                lname,
+                lName,
                 email,
                 password,
                 password2
@@ -181,7 +182,7 @@ module.exports = function (app) {
                 email: req.body.email,
                 password: req.body.password,
                 fName: req.body.fName,
-                lname: req.body.lname
+                lName: req.body.lName
             }).then(function (dbUser) {
                 // redirect
                 req.flash("success_message", "You are now signed up and can log in");

@@ -7,16 +7,21 @@
 
 body, html {
   height: 100%;
+  margin: 0;
 }
 
 body {
   font-family: 'Lato', sans-serif;
   background-image: url("/assets/images/worn_dots.png");
   background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .wrapper {
   min-height: calc(100vh - 300px);
+  flex: 1;
 }
 
 nav ul a,
@@ -112,7 +117,6 @@ p {
 
 footer.page-footer {
   margin: 0;
-  
 }
 
 
@@ -308,11 +312,6 @@ textarea.materialize-textarea:focus:not([readonly]) + label{
   display: inline;  
 }
 
-/* Tracker table stuff */
-/* #trackerForm{
-  
-} */
-
 #trackerForm td{
 border-right: 1px solid black;
 
@@ -321,8 +320,6 @@ border-right: 1px solid black;
   border-left: 1px solid black;
 }
 
-
-[type="checkbox"]:not(:checked), [type="checkbox"]:checked{
-  opacity: 1;
-  position: relative;
+.toggle{
+  background-color: #ffc107;
 }

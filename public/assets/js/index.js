@@ -102,15 +102,25 @@ $(".trackerForm .deleteTracker").on("click", function () {
   });
 });
 
+$(".clickArea").on("click", ".day", function () {
+  var id = $(this).attr("value");
+  console.log(`ID: ${id}`)
+  
+  $.ajax({
+    method: "PUT",
+    url: `/api/tracker/${id}`
+  }).then(function (response) {
+
+    location.reload();
+  });
+   
+  });
 
 $(".trackerForm td").on("click", function () {
   var id = $(this).attr("id"); // id of todo to toggle
   var status = $(this).hasClass("on"); // completed: true or false
   var section = $(this).closest(".trackerForm").attr("id"); // get id of "form"
   var routePart = section.substring(0, section.length - 4); //IS THIS PART NECESSARY IN ALL OF THESE WITH ONLY ONE TODO LIST
-  console.log("id", id);
-  console.log("section", section);
-  console.log("routePart", routePart);
 
   $.ajax({
     method: "PUT",
